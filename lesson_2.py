@@ -25,7 +25,6 @@ elif avg1 >= .6:
 else:
     print("F")
 
-import math
 # Gregory wants to know how many toys they can buy at Toys'N'Us
 
 # They prioritize buying the most expensive toys first (For ejm. If Gregory had $50 
@@ -38,15 +37,27 @@ import math
 #Jumbo Baby yoda plush - $20
 #beyblae - $7.2
 #stickt hand - $.5
-money = int(input("How much money does Greg have? "))
-jumbo = money % 20
-jumbo1= money//20
-print("Gregory can afford", jumbo1, "Jumbo Baby yoda plushies.")
-beyblae = jumbo % 7.2
-beyblae1 = (jumbo) // 7.2
-print("Gregory can afford", beyblae1, "beyblades.")
-sthand = int(beyblae // .5)
-remainder = money - (jumbo1*20) - (beyblae1*7.2) - (sthand*.5)
+import math
 
-print("Gregory can afford", sthand, "sticky hands")
-print("Remainder of", math.ceil(remainder*10)/10, "dollars left.")
+money = int(input("How much money does Greg have? "))
+yoda = 0
+beyblae = 0
+stick_hand = 0
+
+
+if money > 0:
+  while money >= 20:
+    money = money -20
+    yoda += 1
+  while money >= 7.2:
+    money = money - 7.2
+    beyblae += 1
+  while money >= 0.5:
+    money = money - 0.5
+    stick_hand += 1
+  print("Gregory can afford", yoda, "Jumbo Baby Yoda Plushes")
+  print("Gregory can afford", beyblae, "beyblades")
+  print("Gregory can afford", stick_hand, "sticky hands")
+  print("The remainder is", math.ceil(money*10)/10)
+else:
+  print("lmao greg can't afford anything. ")
